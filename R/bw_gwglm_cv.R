@@ -194,7 +194,7 @@ bw_gwglm_cv <- function(formula, family, cordxy, distmethod = "euclidean",
         bmat <- fit1$coefficients[, 1]
         beta <- rbind(beta, bmat)
 
-        test.data <- data[i, c(allvnms)]
+        test.data <- data[i, c(allvnms), drop=FALSE]
         yhat <- predict(fit, newdata = test.data, type = "response")
 
         muhat <- rbind(muhat, yhat)

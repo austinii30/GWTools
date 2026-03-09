@@ -195,7 +195,7 @@ gwglm <- function(formula, family, cordxy, distmethod = "euclidean",
       regdata <- data.frame(data, w)
 
       fit <- glm(formula, family = family, weights = w, data = regdata)
-      H <- hatvalues(fit)[which(names(hatvalues(fit)) == i)]
+      H <- hatvalues(fit)[i]
       S <- rbind(S, H)
       fit1 <- summary(fit)
       bmat <- fit1$coefficients[, 1]

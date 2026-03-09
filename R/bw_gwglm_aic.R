@@ -196,10 +196,10 @@ bw_gwglm_aic <- function(formula, family, cordxy, distmethod = "euclidean",
         w <- kernel_weights(d, h, nr, kernel, adaptive)
         regdata <- data.frame(data, w)
         fit <- glm(formula, family = family, weights = w, data = regdata)
-        H <- hatvalues(fit)[which(names(hatvalues(fit)) == i)]
+        H <- hatvalues(fit)[i]
         S <- rbind(S, H)
 
-        test.data <- data[i, c(allvnms)]
+        test.data <- data[i, c(allvnms), drop=FALSE]
 
         if (family[1] == "poisson") {
           linpred1 <- predict(fit, newdata = test.data, type = "link")
